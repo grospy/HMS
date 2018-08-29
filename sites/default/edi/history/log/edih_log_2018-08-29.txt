@@ -1,0 +1,24 @@
+20180829:090830 EDI_History Setup should not overwrite existing data.<br>
+Setup: directory /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi<br>
+created folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history<br>
+created folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/csv<br>
+created folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/archive<br>
+created folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/log<br>
+created folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/tmp
+folder for f837 exists /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi<br>
+created type folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/f997<br>
+created type folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/f276<br>
+created type folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/f277<br>
+created type folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/f270<br>
+created type folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/f271<br>
+created type folder /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/f278<br>
+
+20180829:090830 _GET request 
+ csvtbllist => yes 
+20180829:090830 _GET request 
+ srvinfo => yes 
+20180829:090830 _GET request 
+ loglist => yes 
+20180829:090831 _GET request 
+ archlist => yes 
+20180829:090831 csv_archive_select_list: using /Applications/MAMP/htdocs/openemr-5.0.1/sites/default/edi/history/archive
