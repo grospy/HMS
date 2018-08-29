@@ -1,6 +1,5 @@
 <?php
-/* Copyright © 2010 by Andrew Moore <amoore@cpan.org> */
-/* Licensing information appears at the end of this file. */
+
 
 error_reporting(E_ALL);
 require_once 'PHPUnit/Framework.php';
