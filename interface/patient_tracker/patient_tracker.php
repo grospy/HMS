@@ -1,20 +1,5 @@
 <?php
-/**
- * Patient Tracker (Patient Flow Board)
- *
- * This program displays the information entered in the Calendar program ,
- * allowing the user to change status and view those changed here and in the Calendar
- * Will allow the collection of length of time spent in each status
- *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Terry Hill <terry@lilysystems.com>
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2015-2017 Terry Hill <terry@lillysystems.com>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2017 Ray Magauran <magauran@medexbank.com>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
- */
+
 
 require_once "../globals.php";
 require_once "$srcdir/patient.inc";
