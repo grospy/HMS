@@ -1,29 +1,4 @@
 <?php
-/**
- * Login screen.
- *
- * LICENSE: This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://opensource.org/licenses/gpl-license.php>;.
- *
- * @package OpenEMR
- * @author  Rod Roark <rod@sunsetsystems.com>
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @author  Kevin Yeh <kevin.y@integralemr.com>
- * @author  Scott Wakefield <scott.wakefield@gmail.com>
- * @author  ViCarePlus <visolve_emr@visolve.com>
- * @author  Julia Longtin <julialongtin@diasp.org>
- * @author  cfapress
- * @author  markleeds
- * @link    http://www.open-emr.org
- */
 
 
 
@@ -95,7 +70,7 @@ if (count($emr_app)) {
 ?>
 <html>
 <head>
-    <title><?php echo text($openemr_name) . " " . xlt('Login'); ?></title>
+    <title><?php echo text(DEMO) . " " . xlt('Login'); ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <?php Header::setupHeader(['jquery-ui', 'jquery-ui-darkness']); ?>
@@ -106,10 +81,10 @@ if (count($emr_app)) {
 
     <script type="text/javascript">
         var registrationTranslations = <?php echo json_encode(array(
-            'title' => xla('OpenEMR Product Registration'),
+            'title' => xla('HMS Product Registration'),
             'pleaseProvideValidEmail' => xla('Please provide a valid email address'),
             'success' => xla('Success'),
-            'registeredSuccess' => xla('Your installation of OpenEMR has been registered'),
+            'registeredSuccess' => xla('Your installation of HMS has been registered'),
             'submit' => xla('Submit'),
             'noThanks' => xla('No Thanks'),
             'registeredEmail' => xla('Registered email'),
@@ -323,6 +298,11 @@ if (count($emr_app)) {
                         <label for="clearPass" class="control-label text-right"><?php echo xlt('Password:'); ?></label>
                         <input type="password" class="form-control" id="clearPass" name="clearPass" placeholder="<?php echo xla('Password:'); ?>">
                     </div>
+                    <a href="http://localhost:8888/HMS/interface/usergroup/user_registration.php">
+                    <div>
+                     <H3> Qeydiyyatdan keç </H3>
+                    </div>
+                     </a>
                     <?php echo $div_app ?>
                     <?php if ($GLOBALS['language_menu_login'] && (count($result3) != 1)) : // Begin language menu block ?>
                         <div class="form-group">

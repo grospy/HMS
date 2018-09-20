@@ -1,14 +1,6 @@
 <?php
 /**
  * This script Assign acl 'Emergency login'.
- *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Roberto Vasquez <robertogagliotta@gmail.com>
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2015 Roberto Vasquez <robertogagliotta@gmail.com>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 
 require_once("../globals.php");
