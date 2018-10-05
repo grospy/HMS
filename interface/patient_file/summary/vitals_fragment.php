@@ -67,14 +67,10 @@ require_once("../../globals.php");
 
     <script type="text/javascript" language= ”JavaScript”>
       g1 = new Dygraph(
-          document.getElementById("noroll"),
-          data_temp,
+          document.getElementById("noroll"),"http://localhost:8888/HMS/interface/patient_file/summary/temperatures.csv",
           {
-            customBars: true,
-            title: 'The normal vs real cardiogramm of the patient.',
-            ylabel: 'BPM(Beats Per Minute)',
-            legend: 'always',
-            showRangeSelector: true
+            rollPeriod: 7,
+            showRoller: true
           }
       );
       g2 = new Dygraph(
@@ -196,9 +192,12 @@ if (!$result) { //If there are no disclosures recorded
   <span class='text'> <?php echo htmlspecialchars(xl("No vitals have been documented."), ENT_NOQUOTES);
 ?>
 
- echo "<script type='text/javascript'>
-                alert('JavaScript is awesome!');
-            </script>";
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
   </span> 
 <?php
 } else {
