@@ -1,34 +1,7 @@
 <?php
-/**
- * Function used when changing a user's password
- * (either the user's own password or an administrator updating a different user)
- *
- * Copyright (C) 2013 Kevin Yeh <kevin.y@integralemr.com> and OEMR <www.oemr.org>
- *
- * LICENSE: This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 3
- * of the License, or (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://opensource.org/licenses/gpl-license.php>;.
- *
- * @package OpenEMR
- * @author  Kevin Yeh <kevin.y@integralemr.com>
- * @link    http://www.open-emr.org
- */
 require_once("$srcdir/authentication/common_operations.php");
 
-/**
- * Does the new password meet the security requirements?
- *
- * @param type $pwd     the password to test
- * @param type $errMsg  why there was a failure
- * @return boolean      is the password good enough?
- */
+
 function test_password_strength($pwd, &$errMsg)
 {
     $require_strong=$GLOBALS['secure_password'] !=0;
@@ -54,20 +27,8 @@ function test_password_strength($pwd, &$errMsg)
 
     return true;
 }
-/**
- * Setup or change a user's password
- *
- * @param type $activeUser      ID of who is trying to make the change (either the user himself, or an administrator)
- * @param type $targetUser      ID of what account's password is to be updated (for a new user this doesn't exist yet).
- * @param type $currentPwd      the active user's current password
- * @param type $newPwd          the new password for the target user
- * @param type $errMsg          passed by reference to return any
- * @param type $create          Are we creating a new user or
- * @param type $insert_sql      SQL to run to create the row in "users" (and generate a new id) when needed.
- * @param type $new_username    The username for a new user
- * @param type $newid           Return by reference of the ID of a created user
- * @return boolean              Was the password successfully updated/created? If false, then $errMsg will tell you why it failed.
- */
+
+
 function update_password($activeUser, $targetUser, &$currentPwd, &$newPwd, &$errMsg, $create = false, $insert_sql = "", $new_username = null, &$newid = null)
 {
     $userSQL="SELECT ".implode(",", array(COL_PWD,COL_SALT,COL_PWD_H1,COL_SALT_H1,COL_PWD_H2,COL_SALT_H2))

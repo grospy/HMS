@@ -1,494 +1,271 @@
 <?php
 
 
-require_once("../globals.php");
-require_once("../../library/acl.inc");
-require_once("$srcdir/options.inc.php");
-require_once("$srcdir/erx_javascript.inc.php");
-
-use OpenEMR\Core\Header;
-use OpenEMR\Menu\MainMenuRole;
-use OpenEMR\Menu\PatientMenuRole;
-use OpenEMR\Services\FacilityService;
-
-$facilityService = new FacilityService();
-
-
-
-$alertmsg = '';
-
-?>
-<html>
-<head>
-
-<?php Header::setupHeader(['common','opener']); ?>
-
-<!-- <script src="checkpwd_validation.js" type="text/javascript"></script> -->
-
-<!-- validation library -->
-<!--//Not lbf forms use the new validation, please make sure you have the corresponding values in the list Page validation-->
+/* Database credentials. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'shamil');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'openemr');
  
-
-<script language="JavaScript">
-
-/*
-* validation on the form with new client side validation (using validate.js).
-* this enable to add new rules for this form in the pageValidation list.
-* */
-
-
-function trimAll(sString)
-{
-    while (sString.substring(0,1) == ' ')
-    {
-        sString = sString.substring(1, sString.length);
-    }
-    while (sString.substring(sString.length-1, sString.length) == ' ')
-    {
-        sString = sString.substring(0,sString.length-1);
-    }
-    return sString;
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-function submitform() {
 
-    var valid = submitme(1, undefined, 'new_user', collectvalidation);
-    if (!valid) return;
+// Do not touch the upstairs _____( |__0__ ___0__| ) 
+ 
+// Define variables and initialize with empty values
+$federaltaxid = $federaldrugid = $upin = "";
+$mname = $lname = $suffix = "";
+$info = $source = $fname = "";
+$id = $password = $authorized = "";
+$username = $address = $salary = "";
+$mname = $name = "";
 
-   top.restoreSession();
+$name_err = $address_err = $salary_err = "";
+$dob = $gender = $reg_type = "";
 
-   //Checking if secure password is enabled or disabled.
-   //If it is enabled and entered password is a weak password, alert the user to enter strong password.
-   if(document.new_user.secure_pwd.value == 1){
-      var password = trim(document.new_user.stiltskin.value);
-      if(password != "") {
-         var pwdresult = passwordvalidate(password);
-         if(pwdresult === 0){
-            alert("<?php echo xls('The password must be at least eight characters, and should');
-            echo '\n';
-            echo xls('contain at least three of the four following items:');
-            echo '\n';
-            echo xls('A number');
-            echo '\n';
-            echo xls('A lowercase letter');
-            echo '\n';
-            echo xls('An uppercase letter');
-            echo '\n';
-            echo xls('A special character');
-            echo '(';
-            echo xls('not a letter or number');
-            echo ').';
-            echo '\n';
-            echo xls('For example:');
-            echo ' healthCare@09'; ?>");
-            return false;
-         }
-      }
-   } //secure_pwd if ends here
+// we defined all variables that can be needed
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    <?php if ($GLOBALS['erx_enable']) { ?>
-   alertMsg='';
-   f=document.forms[0];
-   for(i=0;i<f.length;i++){
-      if(f[i].type=='text' && f[i].value)
-      {
-         if(f[i].name == 'rumple')
-         {
-            alertMsg += checkLength(f[i].name,f[i].value,35);
-            alertMsg += checkUsername(f[i].name,f[i].value);
-         }
-         else if(f[i].name == 'fname' || f[i].name == 'mname' || f[i].name == 'lname')
-         {
-            alertMsg += checkLength(f[i].name,f[i].value,35);
-            alertMsg += checkUsername(f[i].name,f[i].value);
-         }
-         else if(f[i].name == 'federaltaxid')
-         {
-            alertMsg += checkLength(f[i].name,f[i].value,10);
-            alertMsg += checkFederalEin(f[i].name,f[i].value);
-         }
-         else if(f[i].name == 'state_license_number')
-         {
-            alertMsg += checkLength(f[i].name,f[i].value,10);
-            alertMsg += checkStateLicenseNumber(f[i].name,f[i].value);
-         }
-         else if(f[i].name == 'npi')
-         {
-            alertMsg += checkLength(f[i].name,f[i].value,35);
-            alertMsg += checkTaxNpiDea(f[i].name,f[i].value);
-         }
-         else if(f[i].name == 'federaldrugid')
-         {
-            alertMsg += checkLength(f[i].name,f[i].value,30);
-            alertMsg += checkAlphaNumeric(f[i].name,f[i].value);
-         }
-      }
-   }
-   if(alertMsg)
-   {
-      alert(alertMsg);
-      return false;
-   }
-    <?php } // End erx_enable only include block?>
+    // Validate name
+    $input_name = trim($_POST["username"]);
+    if(empty($input_name)){
+        $name_err = "Please enter a username.";
+    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $name_err = "Please enter a valid username.";
+    } else{
+        $name = $input_name;
+    }
 
-    let post_url = $("#new_user").attr("action");
-    let request_method = $("#new_user").attr("method");
-    let form_data = $("#new_user").serialize();
 
-    $.ajax({
-        url: post_url,
-        type: request_method,
-        data: form_data
-    }).done(function (r) {
-        if (r) {
-            alert(r);
-        } else {
-            dlgclose('reload', false);
+    // Validate address
+    $input_password = trim($_POST["password"]);
+    if(empty($input_password)){
+        $password_err = "Please enter a password.";     
+    } else{
+        $password = $input_password;
+    }
+    
+    // Validate address
+    $input_fname = trim($_POST["first_name"]);
+    if(empty($input_fname)){
+        $fname_err = "Please enter a First Name.";     
+    } else{
+        $fname = $input_fname;
+    }
+
+
+    $input_lname = trim($_POST["last_name"]);
+    if(empty($input_lname)){
+        $lname_err = "Please enter a last name.";     
+    } else{
+        $lname = $input_lname;
+    }
+
+    $input_mname = trim($_POST["middle_name"]);
+    if(empty($input_mname)){
+        $mname_err = "Please enter a middle name name.";     
+    } else{
+        $mname = $input_mname;
+    }
+
+    //Under construction
+
+    // Validate date of birth
+    $input_federaltaxid = trim($_POST["federaltaxid"]);
+    if(empty($input_federaltaxid)){
+        $federaltaxid_err = "Please enter a valid federal tax id.";     
+    } else{
+        $federaltaxid = $input_federaltaxid;
+    }
+
+    // Validate federaldrugid
+    $input_federaldrugid = trim($_POST["federaldrugid"]);
+    if(empty($input_federaldrugid)){
+        $federaldrugid_err = "Please enter a valid federal drug id.";     
+    } else{
+        $federaldrugid = $input_federaldrugid;
+    }
+
+     // Validate date of birth
+     $input_upin = trim($_POST["upin"]);
+     if(empty($input_upin)){
+         $upin_err = "Please enter a valid upin.";     
+     } else{
+        $upin = $input_upin;
+     }
+    
+
+     /*
+     
+    // Check input errors before inserting in database
+    if(empty($name_err) && empty($address_err) && empty($salary_err) && empty($dob) && empty($gender) && empty($reg_type) ){
+        // Prepare an insert statement
+       // $sql = "INSERT INTO employees (name, address, salary, DOB, gender, reg_type) VALUES ('$name', '$address', '$salary', '$dob', '$gender' , '$reg_type')";
+         
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_address, $param_salary,$param_dob, $param_gender , $param_reg_type);
+            
+            // Set parameters
+            $param_name = $name;
+            $param_address = $address;
+            $param_salary = $salary;
+            $param_dob = $dob;
+            $param_gender = $gender;
+            $param_reg_type = $reg_type;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Records created successfully. Redirect to landing page
+                header("location: index.php");
+                exit();
+            } else{
+                echo "Something went wrong. Please try again later.";
+            }
         }
-    });
-
-    return false;
+         
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+    */
+    
+    // Close connection
+    mysqli_close($link);
 }
-function authorized_clicked() {
-     var f = document.forms[0];
-     f.calendar.disabled = !f.authorized.checked;
-     f.calendar.checked  =  f.authorized.checked;
-}
-
-</script>
-<style type="text/css">
-  .physician_type_class{
-    width: 120px !important;
-  }
-  #main_menu_role {
-    width: 120px !important;
-  }
-</style>
+?>
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Record</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        .wrapper{
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
-<body class="body_top">
+<body>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>Create Record</h2>
+                    </div>
+                    <p>Please fill this form and submit to add employee record to the database.</p>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-<div class="container">
+                        <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" value="<?php echo $name; ?>">
+                            <span class="help-block"><?php echo $name_err;?></span>
+                        </div>
 
-<table><tr><td>
-<span class="title"><?php echo xlt('Add User'); ?></span>&nbsp;</td>
-<td>
-<a class="btn btn-default btn-save" name='form_save' id='form_save' href='#' onclick="return submitform()">
-    <span><?php echo xlt('Save'); ?></span></a>
-<a class="btn btn-link btn-cancel" id='cancel' href='#'>
-    <span><?php echo xlt('Cancel');?></span>
-</a>
-</td></tr></table>
-<br><br>
+                        <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                            <label>Password</label>
+                            <textarea name="password" class="form-control"><?php echo $password; ?></textarea>
+                            <span class="help-block"><?php echo $password_err;?></span>
+                        </div>
 
-<table border=0>
+                        <div class="form-group <?php echo (!empty($fname_err)) ? 'has-error' : ''; ?>">
+                            <label>First Name</label>
+                            <input type="text" name="first_name" class="form-control" value="<?php echo $fname; ?>">
+                            <span class="help-block"><?php echo $fname_err;?></span>
+                        </div>
 
-<tr><td valign=top>
-<form name='new_user' id="new_user" method='post' action="usergroup_admin.php">
-<input type='hidden' name='mode' value='new_user'>
-<input type='hidden' name='secure_pwd' value="<?php echo attr($GLOBALS['secure_password']); ?>">
+                        <!-- NEW STUFF -->
+                        <div class="form-group <?php echo (!empty($lname_err)) ? 'has-error' : ''; ?>">
+                            <label>Last Name</label>
+                            <input type="text" name="last_name" class="form-control" value="<?php echo $lname; ?>">
+                            <span class="help-block"><?php echo $lname_err;?></span>
+                        </div>
 
-<span class="bold">&nbsp;</span>
-<table border=0 cellpadding=0 cellspacing=0 style="width:600px;">
-<tr>
-<td style="width:150px;"><span class="text"><?php echo xlt('Username'); ?>: </span></td><td  style="width:220px;"><input type=entry name="rumple" style="width:120px;" class="form-control"><span class="mandatory"></span></td>
-    <?php if (!$GLOBALS['use_active_directory']) { ?>
-<td style="width:150px;"><span class="text"><?php echo xlt('Password'); ?>: </span></td><td style="width:250px;"><input type="password" style="width:120px;" name="stiltskin" class="form-control"><span class="mandatory"></span></td>
-    <?php } else { ?>
-        <td> <input type="hidden" value="124" name="stiltskin" /></td>
-    <?php } ?>
-</tr>
-<tr>
-    <td style="width:150px;"></td><td  style="width:220px;"></span></td>
-    <TD style="width:200px;"><span class=text><?php echo xlt('Your Password'); ?>: </span></TD>
-    <TD class='text' style="width:280px;"><input type='password' name=adminPass style="width:120px;"  value="" autocomplete='off' class="form-control"><font class="mandatory"></font></TD>
+                        <div class="form-group <?php echo (!empty($gender_err)) ? 'has-error' : ''; ?>">
+                            <label>Middle Name</label>
+                            <input type="text" name="middle_name" class="form-control" value="<?php echo $gender; ?>">
+                            <span class="help-block"><?php echo $gender_err;?></span>
+                        </div>
 
-</tr>
-<tr>
-<td><span class="text"<?php echo ($GLOBALS['disable_non_default_groups']) ? " style='display:none'" : ""; ?>><?php echo xlt('Groupname'); ?>: </span></td>
-<td>
-<select name="groupname" class="form-control"<?php echo ($GLOBALS['disable_non_default_groups']) ? " style='display:none'" : ""; ?>>
-<?php
-$res = sqlStatement("select distinct name from `groups`");
-$result2 = array();
-for ($iter = 0; $row = sqlFetchArray($res); $iter++) {
-    $result2[$iter] = $row;
-}
+                        <div class="form-group <?php echo (!empty($federaltaxid_err)) ? 'has-error' : ''; ?>">
+                            <label>Federal Tax ID</label>
+                            <input type="text" name="federaltaxid" class="form-control" value="<?php echo $federaltaxid; ?>">
+                            <span class="help-block"><?php echo $federaltaxid_err;?></span>
+                        </div>
 
-foreach ($result2 as $iter) {
-    print "<option value='" . attr($iter{"name"}). "'>" . text($iter{"name"}) . "</option>\n";
-}
-?>
-</select></td>
-<td><span class="text"><?php echo xlt('Provider'); ?>: </span></td><td>
- <input type='checkbox' name='authorized' value='1' onclick='authorized_clicked()' />
- &nbsp;&nbsp;<span class='text'><?php echo xlt('Calendar'); ?>:
- <input type='checkbox' name='calendar' disabled />
-</td>
-</tr>
-<tr>
-<td><span class="text"><?php echo xlt('First Name'); ?>: </span></td><td><input type=entry name='fname' id='fname' style="width:120px;" class="form-control"><span class="mandatory"></span></td>
-<td><span class="text"><?php echo xlt('Middle Name'); ?>: </span></td><td><input type=entry name='mname' style="width:120px;" class="form-control"></td>
-</tr>
-<tr>
-<td><span class="text"><?php echo xlt('Last Name'); ?>: </span></td><td><input type=entry name='lname' id='lname' style="width:120px;" class="form-control"><span class="mandatory"></span></td>
-<td><span class="text"><?php echo xlt('Default Facility'); ?>: </span></td><td><select style="width:120px;" name=facility_id class="form-control">
-<?php
-$fres = $facilityService->getAllServiceLocations();
-if ($fres) {
-    for ($iter = 0; $iter < sizeof($fres); $iter++) {
-        $result[$iter] = $fres[$iter];
-    }
+                        <div class="form-group <?php echo (!empty($federaldrugid_err)) ? 'has-error' : ''; ?>">
+                            <label>Federal Drug ID</label>
+                            <input type="text" name="federaldrugid" class="form-control" value="<?php echo $federaldrugid; ?>">
+                            <span class="help-block"><?php echo $federaldrugid_err;?></span>
+                        </div>
 
-    foreach ($result as $iter) {
-    ?>
-    <option value="<?php echo attr($iter{'id'}); ?>"><?php echo text($iter{'name'}); ?></option>
-<?php
-    }
-}
-?>
-</select></td>
-</tr>
-<tr>
-<td><span class="text"><?php echo xlt('Federal Tax ID'); ?>: </span></td><td><input type=entry name='federaltaxid' style="width:120px;" class="form-control"></td>
-<td><span class="text"><?php echo xlt('Federal Drug ID'); ?>: </span></td><td><input type=entry name='federaldrugid' style="width:120px;" class="form-control"></td>
-</tr>
-<tr>
-<td><span class="text"><?php echo xlt('UPIN'); ?>: </span></td><td><input type="entry" name="upin" style="width:120px;" class="form-control"></td>
-<td class='text'><?php echo xlt('See Authorizations'); ?>: </td>
-<td><select name="see_auth" style="width:120px;" class="form-control">
-<?php
-foreach (array(1 => xl('None'), 2 => xl('Only Mine'), 3 => xl('All')) as $key => $value) {
-    echo " <option value='" . attr($key) . "'";
-    echo ">" . text($value) . "</option>\n";
-}
-?>
-</select></td>
+                        <div class="form-group <?php echo (!empty($upin_err)) ? 'has-error' : ''; ?>">
+                            <label>UPIN</label>
+                            <input type="text" name="upin" class="form-control" value="<?php echo $upin; ?>">
+                            <span class="help-block"><?php echo $upin_err;?></span>
+                        </div>
 
-<tr>
-<td><span class="text"><?php echo xlt('NPI'); ?>: </span></td><td><input type="entry" name="npi" style="width:120px;" class="form-control"></td>
-<td><span class="text"><?php echo xlt('Job Description'); ?>: </span></td><td><input type="entry" name="specialty" style="width:120px;" class="form-control"></td>
-</tr>
-
-<tr>
-    <td>
-        <span class="text"><?php echo xlt('Provider Type'); ?>: </span>
-    </td>
-    <td>
-        <?php echo generate_select_list("physician_type", "physician_type", '', '', xl('Select Type'), 'physician_type_class', '', '', ''); ?>
-    </td>
-</tr>
-<tr>
-  <td>
-    <span class="text"><?php echo xlt('Main Menu Role'); ?>: </span>
-  </td>
-  <td>
-    <?php
-    $menuMain = new MainMenuRole();
-    echo $menuMain->displayMenuRoleSelector();
-    ?>
-  </td>
-  <td>
-    <span class="text"><?php echo xlt('Patient Menu Role'); ?>: </span>
-  </td>
-  <td>
-    <?php
-    $menuPatient = new PatientMenuRole();
-    echo $menuPatient->displayMenuRoleSelector();
-    ?>
-  </td>
-</tr>
-
-<tr>
-<td><span class="text"><?php echo xlt('Taxonomy'); ?>: </span></td>
-<td><input type="entry" name="taxonomy" style="width:120px;" class="form-control" value="207Q00000X"></td>
-<td>&nbsp;</td><td>&nbsp;</td></tr>
-
-<tr>
-<td><span class="text"><?php echo xlt('State License Number'); ?>: </span></td>
-<td><input type="text" name="state_license_number" style="width:120px;" class="form-control"></td>
-<td class='text'><?php echo xlt('NewCrop eRX Role'); ?>:</td>
-<td>
-    <?php echo generate_select_list("erxrole", "newcrop_erx_role", '', '', '--Select Role--', '', '', '', array('style'=>'width:120px')); ?>
-</td>
-</tr>
-<tr>
-<td><span class="text"><?php echo xlt('Weno Provider ID'); ?>: </span></td><td><input type="text" name="erxprid" style="width:120px;" class="form-control" value="<?php echo attr($iter["weno_prov_id"]); ?>"></td>
-</tr>
-<?php if ($GLOBALS['inhouse_pharmacy']) { ?>
-<tr>
- <td class="text"><?php echo xlt('Default Warehouse'); ?>: </td>
- <td class='text'>
-<?php
-echo generate_select_list(
-    'default_warehouse',
-    'warehouse',
-    '',
-    ''
-);
-?>
- </td>
- <td class="text"><?php echo xlt('Invoice Refno Pool'); ?>: </td>
- <td class='text'>
-<?php
-echo generate_select_list(
-    'irnpool',
-    'irnpool',
-    '',
-    xl('Invoice reference number pool, if used')
-);
-?>
- </td>
-</tr>
-<?php } ?>
-
- <tr>
-<td class='text'><?php echo xlt('Access Control'); ?>:</td>
- <td><select name="access_group[]" multiple style="width:120px;" class="form-control">
-<?php
-// List the access control groups
-  $list_acl_groups = acl_get_group_title_list();
-  $default_acl_group = 'Administrators';
-foreach ($list_acl_groups as $value) {
-    if ($default_acl_group == $value) {
-        // Modified 6-2009 by BM - Translate group name if applicable
-        echo " <option value='" . attr($value) . "' selected>" . text(xl_gacl_group($value)) . "</option>\n";
-    } else {
-        // Modified 6-2009 by BM - Translate group name if applicable
-        echo " <option value='" . attr($value) . "'>" . text(xl_gacl_group($value)) . "</option>\n";
-    }
-}
-    ?>
-  </select></td>
-  <td><span class="text"><?php echo xlt('Additional Info'); ?>: </span></td>
-  <td><textarea name=info style="width:120px;" cols=27 rows=4 wrap=auto class="form-control"></textarea></td>
-
-  </tr>
-  <tr height="25"><td colspan="4">&nbsp;</td></tr>
-
-</table>
-
-<br>
-<input type="hidden" name="newauthPass">
-</form>
-</td>
-
-</tr>
-
-<tr<?php echo ($GLOBALS['disable_non_default_groups']) ? " style='display:none'" : ""; ?>>
-
-<td valign=top>
-<form name='new_group' method='post' action="usergroup_admin.php"
- onsubmit='return top.restoreSession()'>
-<br>
-<input type=hidden name=mode value=new_group>
-<span class="bold"><?php echo xlt('New Group'); ?>:</span>
-</td><td>
-<span class="text"><?php echo xlt('Groupname'); ?>: </span><input type=entry name=groupname size=10>
-&nbsp;&nbsp;&nbsp;
-<span class="text"><?php echo xlt('Initial User'); ?>: </span>
-<select name=rumple>
-<?php
-$res = sqlStatement("select distinct username from users where username != ''");
-for ($iter = 0; $row = sqlFetchArray($res); $iter++) {
-    $result[$iter] = $row;
-}
-
-foreach ($result as $iter) {
-    print "<option value='" . attr($iter{"username"}) . "'>" . text($iter{"username"}) . "</option>\n";
-}
-?>
-</select>
-&nbsp;&nbsp;&nbsp;
-<input type="submit" value="<?php echo xla('Save'); ?>">
-</form>
-</td>
-
-</tr>
-
-<tr<?php echo ($GLOBALS['disable_non_default_groups']) ? " style='display:none'" : ""; ?>>
-
-<td valign=top>
-<form name='new_group' method='post' action="usergroup_admin.php"
- onsubmit='return top.restoreSession()'>
-<input type=hidden name=mode value=new_group>
-<span class="bold"><?php echo xlt('Add User To Group'); ?>:</span>
-</td><td>
-<span class="text">
-<?php echo xlt('User'); ?>
-: </span>
-<select name=rumple>
-<?php
-$res = sqlStatement("select distinct username from users where username != ''");
-for ($iter = 0; $row = sqlFetchArray($res); $iter++) {
-    $result3[$iter] = $row;
-}
-
-foreach ($result3 as $iter) {
-    print "<option value='" . attr($iter{"username"}) . "'>" . text($iter{"username"}) . "</option>\n";
-}
-?>
-</select>
-&nbsp;&nbsp;&nbsp;
-<span class="text"><?php echo xlt('Groupname'); ?>: </span>
-<select name=groupname>
-<?php
-$res = sqlStatement("select distinct name from `groups`");
-$result2 = array();
-for ($iter = 0; $row = sqlFetchArray($res); $iter++) {
-    $result2[$iter] = $row;
-}
-
-foreach ($result2 as $iter) {
-    print "<option value='" . attr($iter{"name"}) . "'>" . text($iter{"name"}) . "</option>\n";
-}
-?>
-</select>
-&nbsp;&nbsp;&nbsp;
-<input type="submit" value="<?php echo xla('Add User To Group'); ?>">
-</form>
-</td>
-</tr>
-
-</table>
-
-<?php
-if (empty($GLOBALS['disable_non_default_groups'])) {
-    $res = sqlStatement("select * from `groups` order by name");
-    for ($iter = 0; $row = sqlFetchArray($res); $iter++) {
-        $result5[$iter] = $row;
-    }
-
-    foreach ($result5 as $iter) {
-        $grouplist{$iter{"name"}} .= $iter{"user"} .
-        "(<a class='link_submit' href='usergroup_admin.php?mode=delete_group&id=" .
-        attr($iter{"id"}) . "' onclick='top.restoreSession()'>" . xlt("Remove") . "</a>), ";
-    }
-
-    foreach ($grouplist as $groupname => $list) {
-        print "<span class='bold'>" . text($groupname) . "</span><br>\n<span class='text'>" .
-        text(substr($list, 0, strlen($list)-2)) . "</span><br>\n";
-    }
-}
-?>
-
-<script language="JavaScript">
-<?php
-if ($alertmsg = trim($alertmsg)) {
-    echo "alert('$alertmsg');\n";
-}
-?>
-$(document).ready(function(){
-    $("#cancel").click(function() {
-          dlgclose();
-     });
-
-});
-</script>
-<table>
-
-</table>
-
-</div>
-
+                        <input type="submit" name="mybutton" class="btn btn-primary" value="Submit">
+                        <a href="http://localhost:8888/HMS/interface/login/login.php" class="btn btn-default">Cancel</a>
+                    </form>
+                </div>
+            </div>        
+        </div>
+    </div>
 </body>
 </html>
+
+
+<?php
+
+// This code grabs the values form the above form and puts them into the database
+// First it connected to the database gives the details below.
+$servername = "localhost";
+$username = "shamil";
+$password = "";
+$dbname = "openemr";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+if (isset($_POST["mybutton"]))
+{
+
+    //$sql = "INSERT INTO employees (name, address, salary, DOB, gender, reg_type) VALUES ('$name', '$address', '$salary', '$dob', '$gender' , '$reg_type')";
+    
+    //Query that worked just now : INSERT INTO users ( username, password, fname, mname, lname, federaltaxid, federaldrugid, upin) VALUES ('Loki','12345','Lakamoto','Torio','M','51412213','543634324','16452342')
+    //INSERT INTO users ( username, password, fname, mname, lname, federaltaxid, federaldrugid, upin) VALUES ('$name','$password','$fname','$mname','$lname','$federaltaxid','federaldrugid','upin')
+    $sql = "INSERT INTO users ( username, password, fname, mname, lname, federaltaxid, federaldrugid, upin) VALUES ('$name','$password','$fname','$mname','$lname','$federaltaxid','$federaldrugid','$upin')";
+    
+    
+    echo $_POST["mybutton"];
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
