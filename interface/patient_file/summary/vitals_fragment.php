@@ -73,110 +73,7 @@ require_once("../../globals.php");
             showRoller: true
           }
       );
-      g2 = new Dygraph(
-          document.getElementById("roll14"),
-          data_temp,
-          {
-            rollPeriod: 14,
-            showRoller: true,
-            customBars: true,
-            title: 'Daily Temperatures in New York vs. San Francisco',
-            ylabel: 'Temperature (F)',
-            legend: 'always',
-            xAxisHeight: 14,
-            showRangeSelector: true,
-            rangeSelectorHeight: 80,
-            rangeSelectorPlotStrokeColor: 'purple',
-            rangeSelectorPlotFillColor: 'black',
-            rangeSelectorBackgroundStrokeColor: 'orange',
-            rangeSelectorBackgroundLineWidth: 4,
-            rangeSelectorPlotLineWidth: 5,
-            rangeSelectorForegroundStrokeColor: 'brown',
-            rangeSelectorForegroundLineWidth: 8,
-            rangeSelectorAlpha: 0.5,
-            rangeSelectorPlotFillGradientColor: 'red'
-          }
-      );
-      g3 = new Dygraph(
-          document.getElementById("selectcombined"),
-          [
-            [0, 1, 4, 10],
-            [10, 2, 8, 19],
-            [25, 15, 4, 2],
-            [35, 0, 3, 2]
-          ],
-          {
-            title: 'Daily Temperatures in New York vs. San Francisco',
-            ylabel: 'Temperature (F)',
-            showRangeSelector: true,
-            labels: ['X', 'Y1', 'Y2', 'Y3'],
-            series: {
-              'Y1': { showInRangeSelector: true }
-            }
-          }
-      );
-      g4 = new Dygraph(
-          document.getElementById("nochart"),
-          [[0,1],[10,1]],
-          {
-            xAxisHeight: 30,
-            axes : {
-              x : {
-                drawAxis : false
-              }
-            },
-            labels: ['X', 'Y'],
-            showRangeSelector: true,
-            rangeSelectorHeight: 30
-          }
-      );
-      g5 = new Dygraph(
-          document.getElementById("darkbg1"),
-          data_temp,
-          {
-              rollPeriod: 14,
-              showRoller: true,
-              customBars: true,
-              title: 'Nightly Temperatures in NY vs. SF',
-              ylabel: 'Temperature (F)',
-              legend: 'always',
-              showRangeSelector: true,
-              rangeSelectorPlotFillColor: 'MediumSlateBlue',
-              rangeSelectorPlotFillGradientColor: 'rgba(123, 104, 238, 0)',
-              colorValue: 0.9,
-              fillAlpha: 0.4
-          }
-      );
-      g6 = new Dygraph(
-          document.getElementById("darkbg2"),
-          data_temp,
-          {
-              rollPeriod: 14,
-              showRoller: true,
-              customBars: true,
-              title: 'Nightly Temperatures in NY vs. SF',
-              ylabel: 'Temperature (F)',
-              legend: 'always',
-              showRangeSelector: true,
-              rangeSelectorPlotFillColor: 'MediumSlateBlue',
-              colorValue: 0.9,
-              fillAlpha: 0.4
-          }
-      );
-      g7 = new Dygraph(document.getElementById("stepplot"),
-                      "Date,Idle,Used\n" +
-                      "2008-05-07,70,30\n" +
-                      "2008-05-08,42,88\n" +
-                      "2008-05-09,88,42\n" +
-                      "2008-05-10,33,37\n" +
-                      "2008-05-11,30,35\n",
-                       {
-                          stepPlot: true,
-                          fillGraph: true,
-                          stackedGraph: true,
-                          includeZero: true,
-                          showRangeSelector: true
-                       });
+      
     </script>
   </body>
 </html>
@@ -193,7 +90,7 @@ if (!$result) { //If there are no disclosures recorded
 ?>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
-    Select file to upload:
+    Yüklənilməsi üçün faylı seçin:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">
 </form>
