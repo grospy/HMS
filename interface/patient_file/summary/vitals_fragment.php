@@ -56,8 +56,16 @@ require_once("../../globals.php");
             showRoller: true
           }
       );
+
+
       
     </script>
+
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+    Yüklənilməsi üçün datanı seçin:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
   </body>
 </html>
 
@@ -72,11 +80,7 @@ if (!$result) { //If there are no disclosures recorded
   <span class='text'> <?php echo htmlspecialchars(xl("No vitals have been documented."), ENT_NOQUOTES);
 ?>
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Yüklənilməsi üçün faylı seçin:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+
 
   </span> 
 <?php
