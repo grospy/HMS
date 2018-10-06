@@ -56,15 +56,14 @@ require_once("../../globals.php");
             showRoller: true
           }
       );
-
-
       
     </script>
 
+
+       <h2> Istifadəçi fayyları ilə əməliyatlar şöbəsi : </h2> 
     <form action="upload.php" method="post" enctype="multipart/form-data">
-    Yüklənilməsi üçün datanı seçin:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+  <p> <h4> Serverə yüklənilməsi üçün xəstə datasını seçin (ancaq .csv qəbul edilir): </h4>   <input type="file" name="fileToUpload" id="fileToUpload">   <br> <input type="submit" value="Datanı yüklə" name="submit"> <br>   </p>
+    
 </form>
   </body>
 </html>
