@@ -45,4 +45,27 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+
+
+// assuming file.zip is in the same directory as the executing script.
+//$file = '/Applications/MAMP/htdocs/HMS/QuantCongress.zip';
+
+// get the absolute path to $file
+$path = pathinfo(realpath($target_file), PATHINFO_DIRNAME);
+
+$zip = new ZipArchive;
+$res = $zip->open($target_file);
+if ($res === TRUE) {
+  // extract it to the path we determined above
+  $zip->setPassword('1234567');
+  $zip->extractTo($path);
+  $zip->close();
+  echo "WOOT! $target_file extracted to $path";
+} else {
+  echo "Doh! I couldn't open $target_file";
+}
+
+//renaming the uploaded file into a new file extension
+rename ("$path/$target_file", "$target_file.loli");
 ?>
