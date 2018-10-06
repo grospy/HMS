@@ -53,21 +53,22 @@ require_once("../../globals.php");
     <p>
       No roll period.
     </p>
-    <div id="noroll" style="width:800px; height:320px;"></div>
-
-    
-  
+    <div id="noroll" style="width:600px; height:320px;"></div>
 
     <script type="text/javascript" language= ”JavaScript”>
       g1 = new Dygraph(
-          document.getElementById("noroll"),"http://localhost:8888/HMS/interface/patient_file/summary/temperatures.csv",
+          document.getElementById("noroll"),"http://localhost:8888/HMS/interface/patient_file/summary/uploads/temperatures.csv",
           {
             rollPeriod: 7,
             showRoller: true
+         
           }
       );
       
     </script>
+  
+
+    
 
         
 
@@ -77,7 +78,11 @@ require_once("../../globals.php");
     <form action="upload.php" method="post" enctype="multipart/form-data">
   <p> <h4> Serverə yüklənilməsi üçün xəstə datasını seçin (ancaq .csv qəbul edilir): </h4>   <input type="file" name="fileToUpload" id="fileToUpload">   <br> <input type="submit" value="Datanı yüklə" name="submit"> <br>   </p>
     
+    <h3> Recording a video for the doctor </h3>
+
 </form>
+<a href=" http://localhost:8888/HMS/HMSVideoAudio/index.html"> <button> Record audio & video for the doctor </button> </a>
+
   </body>
 </html>
 
