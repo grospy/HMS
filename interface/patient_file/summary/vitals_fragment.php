@@ -1,5 +1,13 @@
 <?php
 
+include '/Applications/MAMP/htdocs/HMS/interface/patient_file/summary/upload.php';
+//echo $target_dir;
+echo $path;
+echo "&nbsp;";
+//echo $target_dir;
+
+//echo $target_file;
+
 
 require_once("../../globals.php");
 
@@ -54,21 +62,36 @@ require_once("../../globals.php");
       No roll period.
     </p>
     <div id="baseballdiv" style="width:600px; height:320px;"></div>
+    <h2>Stock Chart demo</h2>
+  <div id="stock_div" style="width: 800px; height: 400px;"></div>
 
     <script type="text/javascript" language= ”JavaScript”>
       g1 = new Dygraph(
-          document.getElementById("baseballdiv"),"http://localhost:8888/HMS/interface/patient_file/summary/uploads/suzuki-mariners.txt",
+          document.getElementById("baseballdiv"),'http://localhost:8888/HMS/interface/patient_file/summary/uploads/suzuki-mariners.txt',
           {
             //rollPeriod: 7,
             //showRoller: true
 
-            fractions: true,
+           // fractions: true,
             errorBars: true,
             showRoller: true,
             rollPeriod: 15
          
           }
       );
+
+      g = new Dygraph(document.getElementById("stock_div"),
+        stockData,
+        {
+          customBars: true,
+          logscale: true
+        });
+
+    function setLog(val) {
+      g.updateOptions({ logscale: val });
+      document.getElementById("linear").disabled = !val;
+      document.getElementById("log").disabled = val;
+    }
       
     </script>
   
@@ -80,6 +103,9 @@ require_once("../../globals.php");
 
 
        <h2> Istifadəçi fayyları ilə əməliyatlar şöbəsi : </h2> 
+
+       
+
     <form action="upload.php" method="post" enctype="multipart/form-data">
   <p> <h4> Serverə yüklənilməsi üçün xəstə datasını seçin (ancaq .csv qəbul edilir): </h4>   <input type="file" name="fileToUpload" id="fileToUpload">   <br> <input type="submit" value="Datanı yüklə" name="submit"> <br>   </p>
     
@@ -94,6 +120,8 @@ require_once("../../globals.php");
 
 
 <?php
+
+
 //retrieve most recent set of vitals.
 $result=sqlQuery("SELECT FORM_VITALS.date, FORM_VITALS.id FROM form_vitals AS FORM_VITALS LEFT JOIN forms AS FORMS ON FORM_VITALS.id = FORMS.form_id WHERE FORM_VITALS.pid=? AND FORMS.deleted != '1' ORDER BY FORM_VITALS.date DESC", array($pid));
     
