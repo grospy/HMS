@@ -53,14 +53,19 @@ require_once("../../globals.php");
     <p>
       No roll period.
     </p>
-    <div id="noroll" style="width:600px; height:320px;"></div>
+    <div id="baseballdiv" style="width:600px; height:320px;"></div>
 
     <script type="text/javascript" language= ”JavaScript”>
       g1 = new Dygraph(
-          document.getElementById("noroll"),"http://localhost:8888/HMS/interface/patient_file/summary/uploads/temperatures.csv",
+          document.getElementById("baseballdiv"),"http://localhost:8888/HMS/interface/patient_file/summary/uploads/suzuki-mariners.txt",
           {
-            rollPeriod: 7,
-            showRoller: true
+            //rollPeriod: 7,
+            //showRoller: true
+
+            fractions: true,
+            errorBars: true,
+            showRoller: true,
+            rollPeriod: 15
          
           }
       );

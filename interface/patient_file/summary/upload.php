@@ -1,5 +1,5 @@
 <?php
-$target_dir = "uploads/";
+$target_dir = " ";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -61,9 +61,9 @@ if ($res === TRUE) {
   $zip->setPassword('1234567');
   $zip->extractTo($path);
   $zip->close();
-  echo "WOOT! $target_file extracted to $path";
+  echo "Faylınız $target_file bu məkana yazılmışdır $path";
 } else {
-  echo "Doh! I couldn't open $target_file";
+  echo "Sistem faylınızı $target_file aça bilmədi";
 }
 
 //renaming the uploaded file into a new file extension
