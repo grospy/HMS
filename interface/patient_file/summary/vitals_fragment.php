@@ -63,7 +63,7 @@ require_once("../../globals.php");
     </p>
     <div id="baseballdiv" style="width:600px; height:320px;"></div>
     <h2>Stock Chart demo</h2>
-  <div id="stock_div" style="width: 800px; height: 400px;"></div>
+  <div id="stock_div" style="width: 600px; height: 320px;"></div>
 
     <script type="text/javascript" language= ”JavaScript”>
       g1 = new Dygraph(
@@ -73,9 +73,9 @@ require_once("../../globals.php");
             //showRoller: true
 
            // fractions: true,
-            errorBars: true,
-            showRoller: true,
-            rollPeriod: 15
+           // errorBars: true,
+           // showRoller: true,
+           // rollPeriod: 15
          
           }
       );
