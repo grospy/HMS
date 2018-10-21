@@ -55,15 +55,15 @@ require_once("../../globals.php");
   <form action="SecondUpload.php" method="post" enctype="multipart/form-data">
   <input type="file" name="my-file" size="50" maxlength="25"> <br> 
   <input type="submit" name="upload" value="Upload">
+ 
 </form>
-
+&nbsp; &nbsp; &nbsp;
     <h4>Burada göstərilən pasientin kardiqramıdır. (Real Time)</h4>
     <p>
       No roll period.
     </p>
     <div id="baseballdiv" style="width:600px; height:320px;"></div>
-    <h2>Stock Chart demo</h2>
-  <div id="stock_div" style="width: 600px; height: 320px;"></div>
+   
 
     <script type="text/javascript" language= ”JavaScript”>
       g1 = new Dygraph(
@@ -79,19 +79,22 @@ require_once("../../globals.php");
          
           }
       );
+      /*
+       <h2>Stock Chart demo</h2>
+  <div id="stock_div" style="width: 600px; height: 320px;"></div>
 
       g = new Dygraph(document.getElementById("stock_div"),
         stockData,
         {
           customBars: true,
           logscale: true
-        });
+        }); 
 
     function setLog(val) {
       g.updateOptions({ logscale: val });
       document.getElementById("linear").disabled = !val;
       document.getElementById("log").disabled = val;
-    }
+    }*/
       
     </script>
   
@@ -107,7 +110,7 @@ require_once("../../globals.php");
        
 
     <form action="upload.php" method="post" enctype="multipart/form-data">
-  <p> <h4> Serverə yüklənilməsi üçün xəstə datasını seçin (ancaq .csv qəbul edilir): </h4>   <input type="file" name="fileToUpload" id="fileToUpload">   <br> <input type="submit" value="Datanı yüklə" name="submit"> <br>   </p>
+  <p> <h4> Serverə yüklənilməsi üçün xəstə datasını seçin (ancaq .txt qəbul edilir): </h4>   <input type="file" name="fileToUpload" id="fileToUpload">   <br> <input type="submit" value="Datanı yüklə" name="submit"> <br>   </p>
     
     <h3> Recording a video for the doctor </h3>
 
