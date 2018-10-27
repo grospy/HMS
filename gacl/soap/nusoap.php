@@ -49,14 +49,6 @@ require_once('class.wsdl.php');
 // server class
 require_once('class.soap_server.php');*/
 
-/**
-*
-* nusoap_base
-*
-* @author   Dietrich Ayala <dietrich@ganx4.com>
-* @version  v 0.6.3
-* @access   public
-*/
 class nusoap_base {
 
 	var $title = 'NuSOAP';

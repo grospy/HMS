@@ -1,13 +1,6 @@
 <?php
 /* FormHPI class
  *
- * @package OpenEMR
- * @author Aron Racho <aron@mi-squared.com>
- * @author Stephen Waite <stephen.waite@cmsvt.com>
- * @copyright Copyright (C) 2009 Aron Racho <aron@mi-squared.com>
- * @copyright Copyright (c) 2017 Stephen Waite <stephen.waite@cmsvt.com>
- * @link https://github.com/openemr/openemr/tree/master
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 
 define("EVENT_VEHICLE", 1);

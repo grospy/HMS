@@ -36,16 +36,6 @@
  * as it makes use of nearly every API Call.
  *
  */
-/**
- * gacl_api Extended API Class
- *
- * Class gacl_api should be used for applications that must interface directly with
- * phpGACL's data structures, objects, and rules.
- *
- * @package phpGACL
- * @author Mike Benoit <ipso@snappymail.ca>
- *
- */
 
 class gacl_api extends gacl {
 

@@ -6,9 +6,6 @@
 // as published by the Free Software Foundation; either version 2
 // of the License, or (at your option) any later version.
 //
-// This script is for automatic installation and ocnfiguration
-//   of OpenEMR.
-//
 // This script is meant to be run as php command line (php-cli),
 //  and needs to be first activated by removing the 'exit' line
 //  at top (via sed command).

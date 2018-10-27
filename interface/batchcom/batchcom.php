@@ -2,13 +2,6 @@
 /**
  * Batch Communication Tool for selecting/communicating with subsets of patients
  *
- * @package OpenEMR
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @author  Jason 'Toolbox' Oettinger <jason@oettinger.email>
- * @link    http://www.open-emr.org
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2017 Jason 'Toolbox' Oettinger <jason@oettinger.email>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 
 //INCLUDES, DO ANY ACTIONS, THEN GET OUR DATA

@@ -6,14 +6,6 @@
  *   INSERT INTO list_options VALUES ('lists','chartloc','Chart Storage Locations',51,0,0);
  * </pre>
  *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Rod Roark <rod@sunsetsystems.com>
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @author  Roberto Vasquez <robertogagliotta@gmail.com>
- * @Copyright (C) 2008-2012 Rod Roark <rod@sunsetsystems.com>
- * @Copyright (C) 2011-2018 Brady Miller <brady.g.miller@gmail.com>
- * @Copyright (C) 2017 Roberto Vasquez <robertogagliotta@gmail.com>
  */
 
 

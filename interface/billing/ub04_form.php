@@ -2,11 +2,6 @@
 /**
  * UB04 Claims Form
  *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Jerry Padgett <sjpadgett@gmail.com>
- * @copyright Copyright (c) 2017 Jerry Padgett <sjpadgett@gmail.com>
- * @license https://www.gnu.org/licenses/agpl-3.0.en.html GNU Affero General Public License 3
  */
 /* $isAuthorized tells us if the form is for user UI or claim processing and provides another security check */
 if ($isAuthorized !== true) {

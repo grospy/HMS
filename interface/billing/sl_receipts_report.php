@@ -7,15 +7,6 @@
  * but I wanted to make the code available to the project because
  * many other practices have this same need. - rod@sunsetsystems.com
  *
- * @package   OpenEMR
- * @link      http://www.open-emr.org
- * @author    Rod Roark <rod@sunsetsystems.com>
- * @author    Terry Hill <terry@lillysystems.com>
- * @author    Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2006-2016 Rod Roark <rod@sunsetsystems.com>
- * @copyright Copyright (c) 2016 Terry Hill <terry@lillysystems.com>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @license   https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 
 

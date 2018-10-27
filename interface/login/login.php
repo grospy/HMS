@@ -298,7 +298,9 @@ if (count($emr_app)) {
                         <label for="clearPass" class="control-label text-right"><?php echo xlt('Password:'); ?></label>
                         <input type="password" class="form-control" id="clearPass" name="clearPass" placeholder="<?php echo xla('Password:'); ?>">
                     </div>
-                    <a href="http://localhost:8888/HMS/interface/usergroup/user_registration.php">
+                    <a href="http://localhost:8888/HMS/interface/usergroup/usergroup_admin_add.php">
+
+                    
                     <div>
                      <H3> Qeydiyyatdan keç </H3>
                     </div>

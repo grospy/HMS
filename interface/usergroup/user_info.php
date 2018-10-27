@@ -2,13 +2,6 @@
 /**
  * User password change tool
  *
- * @package   OpenEMR
- * @link      http://www.open-emr.org
- * @author    Roberto Vasquez <robertogagliotta@gmail.com>
- * @author    Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2017 Roberto Vasquez <robertogagliotta@gmail.com>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @license   https://github.com/openemr/openemr/blob/master/LICENSE CNU General Public License 3
  */
 
 require_once("../globals.php");

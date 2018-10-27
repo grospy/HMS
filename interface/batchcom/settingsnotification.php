@@ -2,13 +2,6 @@
 /**
  * Notification Settings Script
  *
- * @package OpenEMR
- * @author  cfapress
- * @author  Jason 'Toolbox' Oettinger <jason@oettinger.email>
- * @link    http://www.open-emr.org
- * @copyright Copyright (c) 2008 cfapress
- * @copyright Copyright (c) 2017 Jason 'Toolbox' Oettinger <jason@oettinger.email>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 require_once("../globals.php");
 require_once("$srcdir/registry.inc");

@@ -2,15 +2,6 @@
 /**
  * To be run by cron hourly, sending phone reminders
  *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @author  Jason 'Toolbox' Oettinger <jason@oettinger.email>
- * @author  Robert Down <robertdown@live.com>
- * @copyright Copyright (c) 2012 Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2017 Jason 'Toolbox' Oettinger <jason@oettinger.email>
- * @copyright Copyright (c) 2017 Robert Down <robertdown@live.com>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 require_once(dirname(__FILE__)."/../../interface/globals.php");
 require_once($GLOBALS['srcdir'] . "/maviq_phone_api.php");

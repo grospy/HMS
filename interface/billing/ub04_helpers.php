@@ -2,11 +2,6 @@
 /**
  * Helper for UB04 form.
  *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Jerry Padgett <sjpadgett@gmail.com>
- * @copyright Copyright (c) 2017 Jerry Padgett <sjpadgett@gmail.com>
- * @license https://www.gnu.org/licenses/agpl-3.0.en.html GNU Affero General Public License 3
  */
 require_once("../globals.php");
 require_once("ub04_codes.inc.php");

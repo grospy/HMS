@@ -19,23 +19,6 @@
 	
 	Your database now has deidientified all data and can never be restored. 
 
- * Copyright (C) 2017 Daniel Pflieger <growlingflea@gmail.com daniel@mi-squared.com and OEMR <www.oemr.org>
- *
- * LICENSE: This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 3
- * of the License, or (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://opensource.org/licenses/gpl-license.php>;.
- *
- * @package OpenEMR
- * @author  Daniel Pflieger <growlingflea@gmail.com> <daniel@mi-squared.com>
- * @link    http://www.open-emr.org
-
 	
     NOTE:  IT IS STILL THE RESPONSIBILITY OF THE USER TO ENSURE THAT ALL PERSONAL IDENTIFIABLE INFORMATION HAS BEEN DELETED FROM THE DATABASE.  THE END USER
     MUST MAKE SURE THAT ALL TEXT AREAS IN FORMS DO NOT INCLUDE THE PATIENTS REAL NAME. 

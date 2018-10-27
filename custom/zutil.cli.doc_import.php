@@ -25,11 +25,6 @@
  * 3. Use in_situ=true option to create document records without relocating the files.
  *    This option requires good understanding of current functionality.
  *
- * @package   OpenEMR
- * @link      http://www.open-emr.org
- * @author    MD Support <mdsupport@users.sf.net>
- * @copyright Copyright (c) 2017 MD Support <mdsupport@users.sf.net>
- * @license   https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 
 // Allow this script to be run as a cronjob

@@ -2,22 +2,6 @@
 /**
  * Controller to handle user password change requests.
  *
- * <pre>
- * Expected REQUEST parameters
- * $_REQUEST['pk'] - The primary key being used for encryption. The browser would have requested this previously
- * $_REQUEST['curPass'] - ciphertext of the user's current password
- * $_REQUEST['newPass'] - ciphertext of the new password to use
- * $_REQUEST['newPass2']) - second copy of ciphertext of the new password to confirm proper user entry.
- * </pre>
- *
- * @package   OpenEMR
- * @link      http://www.open-emr.org
- * @author    Kevin Yeh <kevin.y@integralemr.com>
- * @author    Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2013 Kevin Yeh <kevin.y@integralemr.com>
- * @copyright Copyright (c) 2013 OEMR <www.oemr.org>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @license   https://github.com/openemr/openemr/blob/master/LICENSE CNU General Public License 3
  */
 
 

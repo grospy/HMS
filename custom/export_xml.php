@@ -2,13 +2,6 @@
 /**
  * Exports patient demographics to a custom XML format
  *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Rod Roark <rod@sunsetsystems.com>
- * @author  Roberto Vasquez <robertogagliotta@gmail.com>
- * @copyright Copyright (c) 2005 Rod Roark <rod@sunsetsystems.com>
- * @copyright Copyright (c) 2017 Roberto Vasquez <robertogagliotta@gmail.com>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
 */
 
 
