@@ -97,7 +97,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 		<p>Member Since:<?=$signupdate?></p>
 		<p>Number of Logins: <?=$user->data()->logins?></p>
 		<?php if($settings->session_manager==1) {?><p>Number of Active Sessions: <?=UserSessionCount()?> <sup><a class="nounderline" data-toggle="tooltip" title="Click the Manage Sessions button in the left sidebar for more information.">?</a></sup></p><?php } ?>
-		<p>This is the private account page for your users. It can be whatever you want it to be; This code serves as a guide on how to use some of the built-in UserSpice functionality. </p>
+		<p>This is the private account page for your users. It can be whatever you want it to be; This code serves as a guide on how to use some of the built-in system functionality. </p>
 	    <p> Crappy Pasta </p>
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/GVV06jTYjeY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			<html>

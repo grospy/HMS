@@ -1,10 +1,10 @@
 <?php
 
 
-require_once("../globals.php");
-require_once("../../library/acl.inc");
-require_once("$srcdir/options.inc.php");
-require_once("$srcdir/erx_javascript.inc.php");
+require_once("../globals.php"); //require_once() Function. require_once() function can be used to include a PHP file in another one, when you may need to include the called file more than once. If it is found that the file has already been included, calling script is going to ignore further inclusions.
+require_once("../../library/acl.inc"); // require_once() Function. require_once() function can be used to include a PHP file in another one, when you may need to include the called file more than once. If it is found that the file has already been included, calling script is going to ignore further inclusions.
+require_once("$srcdir/options.inc.php"); //require_once() Function. require_once() function can be used to include a PHP file in another one, when you may need to include the called file more than once. If it is found that the file has already been included, calling script is going to ignore further inclusions.
+require_once("$srcdir/erx_javascript.inc.php"); //require_once() Function. require_once() function can be used to include a PHP file in another one, when you may need to include the called file more than once. If it is found that the file has already been included, calling script is going to ignore further inclusions.
 
 use OpenEMR\Core\Header;
 use OpenEMR\Menu\MainMenuRole;
@@ -17,7 +17,7 @@ if (!acl_check('admin', 'users')) {
     exit();
 }
 
-$alertmsg = '';
+$alertmsg = '';  // a variable declaration
 
 ?>
 <html>
@@ -25,12 +25,13 @@ $alertmsg = '';
 
 <?php Header::setupHeader(['common','opener']); ?>
 
-<script src="checkpwd_validation.js" type="text/javascript"></script>
+<script src="checkpwd_validation.js" type="text/javascript"></script> <!-- this includes checkpwd_validation.js into this file -->
 
 <!-- validation library -->
 <!--//Not lbf forms use the new validation, please make sure you have the corresponding values in the list Page validation-->
 <?php    $use_validate_js = 1;?>
-<?php  require_once($GLOBALS['srcdir'] . "/validation/validation_script.js.php"); ?>
+<?php  require_once($GLOBALS['srcdir'] . "/validation/validation_script.js.php"); ?>  <!-- //require_once() Function. require_once() function can be used to include a PHP file in another one, when you may need to include the called file more than once. If it is found that the file has already been included, calling script is going to ignore further inclusions. -->
+
 <?php
 //Gets validation rules from Page Validation list.
 //Note that for technical reasons, we are bypassing the standard validateUsingPageRules() call.
@@ -61,6 +62,8 @@ function trimAll(sString)
     }
     return sString;
 }
+
+
 
 function submitform() {
 
@@ -161,6 +164,9 @@ function submitform() {
 
     return false;
 }
+
+
+
 function authorized_clicked() {
      var f = document.forms[0];
      f.calendar.disabled = !f.authorized.checked;

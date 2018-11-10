@@ -1,9 +1,9 @@
 <?php
 
-include '/Applications/MAMP/htdocs/HMS/interface/patient_file/summary/upload.php';
+//include '/Applications/MAMP/htdocs/HMS/interface/patient_file/summary/upload.php';
 //echo $target_dir;
-echo $path;
-echo "&nbsp;";
+//echo $path;
+//echo "&nbsp;";
 //echo $target_dir;
 
 //echo $target_file;
@@ -12,7 +12,7 @@ echo "&nbsp;";
 require_once("../../globals.php");
 
 ?>
-<div id='vitals' style='margin-top: 3px; margin-left: 10px; margin-right: 10px'><!--outer div-->
+<div id='vitals' style='margin-top: 3px; margin-left: 10px; margin-right: 10px'><!--outer div-->  
 <br>
 
 <html>
@@ -76,7 +76,15 @@ require_once("../../globals.php");
            // errorBars: true,
            // showRoller: true,
            // rollPeriod: 15
-         
+/*
+           legend: 'always',
+          title: 'NYC vs. SF',
+          showRoller: true,
+          rollPeriod: 14,
+          customBars: true,
+          ylabel: 'Temperature (F)',
+         */
+
           }
       );
       /*
