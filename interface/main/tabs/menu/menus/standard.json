@@ -1,5 +1,7 @@
 [
+  
   {
+    
     "label": "Calendar",
     "menu_id": "cal0",
     "target": "cal",
@@ -31,7 +33,7 @@
       "!disable_calendar"
     ]
   },
-  {
+  { 
         "label": "Recall Board",
         "menu_id": "pfb0",
         "target": "rcb",
@@ -46,7 +48,7 @@
       "!disable_rcb"
     ]
 
-   },
+   } ,
 
   {
     "label": "Messages",
@@ -2027,156 +2029,6 @@
       "patients",
       "docs"
     ]
-  },
-  {
-    "label": "Popups",
-    "menu_id": "popup",
-    "children": [
-      {
-        "label": "Issues",
-        "menu_id": "Popup:Issues",
-        "url": "/interface/patient_file/problem_encounter.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "med"
-        ],
-        "global_req": "allow_issue_menu_link"
-      },
-      {
-        "label": "Export",
-        "menu_id": "Popup:Export",
-        "url": "/custom/export_xml.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "demo"
-        ],
-        "global_req": "!ippf_specific"
-      },
-      {
-        "label": "Import",
-        "menu_id": "Popup:Import",
-        "url": "/custom/import_xml.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "demo",
-          "write"
-        ],
-        "global_req": "!ippf_specific"
-      },
-      {
-        "label": "Appts",
-        "menu_id": "Popup:Appts",
-        "url": "/interface/reports/appointments_report.php?patient=",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "appt"
-        ],
-        "global_req": "!disable_calendar"
-      },
-      {
-        "label": "Superbill",
-        "menu_id": "Popup:Superbill",
-        "url": "/interface/patient_file/printed_fee_sheet.php?fill=1",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "med"
-        ]
-      },
-      {
-        "label": "Payment",
-        "menu_id": "Popup:Payment",
-        "url": "/interface/patient_file/front_payment.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "acct",
-          "bill",
-          "write"
-        ]
-      },
-      {
-        "label": "Checkout",
-        "menu_id": "Popup:Checkout",
-        "url": "/interface/patient_file/pos_checkout.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "acct",
-          "bill",
-          "write"
-        ],
-        "global_req": "inhouse_pharmacy"
-      },
-      {
-        "label": "Letter",
-        "menu_id": "Popup:Letter",
-        "url": "/interface/patient_file/letter.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "med"
-        ]
-      },
-      {
-        "label": "Chart Label",
-        "menu_id": "Popup:Chart Label",
-        "url": "/interface/patient_file/label.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "demo"
-        ],
-        "global_req": "chart_label_type"
-      },
-      {
-        "label": "Barcode Label",
-        "menu_id": "Popup:Barcode Label",
-        "url": "/interface/patient_file/barcode_label.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "demo"
-        ],
-        "global_req": "barcode_label_type"
-      },
-      {
-        "label": "Address Label",
-        "menu_id": "Popup:Address Label",
-        "url": "/interface/patient_file/addr_label.php",
-        "target": "pop",
-        "children": [],
-        "requirement": 1,
-        "acl_req": [
-          "patients",
-          "demo"
-        ],
-        "global_req": "addr_label_type"
-      }
-    ],
-    "requirement": 0
   },
   {
     "label": "About",

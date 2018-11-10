@@ -1,13 +1,5 @@
 <?php
-/**
- * Advance directives gui.
- *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
- */
+
 
 include_once("../../globals.php");
 include_once("$srcdir/options.inc.php");

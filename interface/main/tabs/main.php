@@ -2,11 +2,6 @@
 use Esign\Api;
 use OpenEMR\Core\Header;
 
-
-
-
-
-
 /* Include our required headers */
 require_once('../../globals.php');
 require_once $GLOBALS['srcdir'].'/ESign/Api.php';

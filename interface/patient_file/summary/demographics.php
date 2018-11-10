@@ -1,16 +1,5 @@
 <?php
-/**
- *
- * Patient summary screen.
- *
- * @package OpenEMR
- * @link    http://www.open-emr.org
- * @author  Brady Miller <brady.g.miller@gmail.com>
- * @author    Sharon Cohen <sharonco@matrix.co.il>
- * @copyright Copyright (c) 2017 Brady Miller <brady.g.miller@gmail.com>
- * @copyright Copyright (c) 2017 Sharon Cohen <sharonco@matrix.co.il>
- * @license https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
- */
+
 
 
 require_once("../../globals.php");

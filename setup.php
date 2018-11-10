@@ -1,26 +1,5 @@
 <?php
-/**
- * Installation script.
- *
- * Copyright (C) 2016 Roberto Vasquez <robertogagliotta@gmail.com>
- *
- * LICENSE: This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- * This program is distributed in the hope that it will be usefull,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY OF FITNESS FOR A PARTICULAR PURPOSE, See the
- * GNU General Public License for more details.
- * You should have received a copy of the CNU General Public License
- * along with this program. If not, see <http://opensource.org/Licenses/gpl-license.php>;.
- *
- * @package OpenEMR
- * @author Roberto Vasquez <robertogagliotta@gmail.com>
- * @author Scott Wakefield <scott@npclinics.com.au>
- * @link http://www.open-emr.org
- *
-**/
+
 
 // Warning. If you set $allow_multisite_setup to true, this is a potential security vulnerability.
 // Recommend setting it back to false (or removing this setup.php script entirely) after you
