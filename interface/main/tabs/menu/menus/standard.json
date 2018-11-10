@@ -17,22 +17,7 @@
       "!ippf_specific"
     ]
   },
-  {
-    "label": "Flow Board",
-    "menu_id": "pfb0",
-    "target": "flb",
-    "url": "/interface/patient_tracker/patient_tracker.php?skip_timeout_reset=1",
-    "children": [],
-    "requirement": 0,
-    "acl_req": [
-      "patients",
-      "appt"
-    ],
-    "global_req_strict": [
-      "!disable_pat_trkr",
-      "!disable_calendar"
-    ]
-  },
+  
   { 
         "label": "Recall Board",
         "menu_id": "pfb0",

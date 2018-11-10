@@ -153,6 +153,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
            // errorBars: true,
            // showRoller: true,
            // rollPeriod: 15
+           showRangeSelector: true
          
           }
       );
@@ -174,7 +175,22 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
     }*/
       
     </script>
-	<a href=" http://localhost:8888/HMS/HMSVideoAudio/index.html"> <button> Record audio & video for the doctor </button> </a>
+    &nbsp;   &nbsp;&nbsp; &nbsp; &nbsp;
+    &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
+    &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<a href=" http://localhost:8888/HMS/HMSVideoAudio/index.html" style="height:300px;width:800px"> <button> Record audio & video for the doctor </button> </a>
 	</html>
 
 	    
