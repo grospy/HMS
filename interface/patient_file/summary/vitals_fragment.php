@@ -85,6 +85,9 @@ require_once("../../globals.php");
           ylabel: 'Temperature (F)',
          */
 
+      
+        showRangeSelector: true
+
           }
       );
       /*

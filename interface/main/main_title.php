@@ -131,7 +131,7 @@ $res = sqlQuery("select * from users where username='".$_SESSION{"authUser"}."'"
 <?php //RP_MODIFIED 2016-05-06
 
 $open_emr_ver = "$v_major.$v_minor.$v_patch";
-$url = "open-emr.org/wiki/index.php/OpenEMR_".$open_emr_ver."_Users_Guide";
+$url = "www.shamilkarimli.tk";
 
 ?>
 </td>
